@@ -1,0 +1,44 @@
+.paginator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 10px;
+}
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--whiteText);
+}
+.pagination span {
+  /* display: flex;
+    align-items: center;
+    justify-content: center; */
+  padding: 5px;
+  background: var(--blueColor);
+  cursor: pointer;
+}
+.user .btn button:active,
+.pagination span:active {
+  box-shadow: 1px 1px 2px #222 inset;
+}
+.active {
+  box-shadow: 1px 1px 2px #222 inset;
+}
+.next {
+  padding: 5px;
+  background: var(--blueColor);
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--whiteText);
+}
+.next:active {
+  box-shadow: 1px 1px 2px #222 inset;
+}

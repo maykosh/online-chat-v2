@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.container .image img {
+  width: 400px;
+  height: 400px;
+}
+.container .info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.container .info .line {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.container .info .line .title {
+  color: var(--blueColor);
+  font-weight: bold;
+  font-size: 20px;
+}
+.container .info .line .smallImage img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+.container .info .line input, select, textarea {
+  padding: 5px;
+  border: 1px solid var(--blueColor);
+}
+.container .info .line label {
+  color: var(--blueColor);
+  border: 2px solid var(--blueColor);
+  padding: 5px;
+  border-style: dashed;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+.container button{
+    padding: 10px;
+    border: none;
+    background: var(--blueColor);
+    color: var(--whiteText);
+    cursor: pointer;
+}

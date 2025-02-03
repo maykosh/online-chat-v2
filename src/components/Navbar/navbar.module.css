@@ -1,0 +1,23 @@
+.container {
+  grid-area: navbar;
+  /* position: sticky;
+  top: 80px; */
+  gap: 10px;
+  padding: 5px;
+  /* height: 100vh; */
+  background-color: var(--blueColor);
+  display: flex;
+  flex-direction: column;
+}
+
+.container .item a {
+  display: flex;
+  width: 100%;
+  background-color: var(--blueColor);
+  border: 1px solid #fff;
+  padding: 10px;
+  color: var(--whiteText);
+}
+.container .item a.activeLink{
+    box-shadow: 1px 1px 2px #222 inset;
+}

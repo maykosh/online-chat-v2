@@ -1,0 +1,12 @@
+.container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  gap: 20px;
+  .dialogs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+  }
+}

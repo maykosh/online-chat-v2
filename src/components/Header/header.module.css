@@ -1,0 +1,15 @@
+.container{
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--blueColor);
+    width: 100%;
+    /* position: sticky; */
+    /* top: 10px; */
+    padding: 10px 15px;
+}
+.container .login a{
+    color: var(--whiteText);
+    cursor: pointer;
+}

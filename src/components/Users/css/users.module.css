@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px;
+  /* position: relative; */
+  /* border: 1px solid var(--blueColor); */
+}
+.container .user {
+  width: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid var(--blueColor);
+  padding: 10px;
+  transition: all 0.4s ease;
+}
+.container .user .image{
+  display: flex;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+.container .user .image  img {
+ width: 100%;
+ height: 100%;
+  border-radius: 50%;
+}
+
+.container .user .info,
+.location {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  flex: 1;
+}
+
+.container .user .info .fullName a {
+  font-size: 16px;
+  color: var(--grayColor);
+  font-weight: bold;
+}
+.container .user .info .status {
+  font-size: 14px;
+  color: var(--grayColor);
+}
+.container .user .location {
+  color: var(--grayColor);
+  font-size: 14px;
+}
+
+.user .btn button {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blueColor);
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  color: var(--whiteText);
+}
+.container .pagination{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--whiteText);
+}
+.container .pagination span{
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  padding: 5px;
+
+  background: var(--blueColor);
+  cursor: pointer;
+}
+.user .btn button:active, .pagination span:active{
+  box-shadow: 1px 1px 2px #222 inset;
+}
+.container .active{
+  box-shadow: 1px 1px 2px #222 inset;
+}
