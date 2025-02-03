@@ -54,7 +54,7 @@ export const profileAPI = {
     return res.data;
   },
   getStatus: async (userId: number) => {
-    const res = await instance.get(`profile/status/${userId}`);
+    const res = await instance.get<string>(`profile/status/${userId}`);
     return res.data;
   },
   updateStatus: async (status: string) => {
@@ -68,7 +68,7 @@ export const profileAPI = {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-    });
+    }); 
     return res.data;
   },
   updateProfile: async (data: ProfileType) => {

@@ -49,7 +49,7 @@ const dialogsReducer = (state: DialogsReducerType = initialState, action: Action
 
 type ActionType = sendMessageCreatorType
 //action creators
-type sendMessageCreatorType = {
+export type sendMessageCreatorType = {
    type: typeof SEND_MESSAGE
    payload: string
 }
