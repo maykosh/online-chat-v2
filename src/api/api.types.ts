@@ -2,20 +2,18 @@ export enum ResultCode {
    Success,
    Error,
 }
-// authAPI
-export type AuthMeType = {
-   resultCode: ResultCode;
+
+type ResponseType<T = {}, RC = ResultCode> = {
+   resultCode: RC;
    messages: string[];
-   data: {
-      id: number;
-      email: string;
-      login: string;
-   };
+   data: T;
 };
-export type LoginType = {
-   resultCode: ResultCode;
-   messages: string[];
-   data: {
-      userId: number;
-   };
-};
+
+export type GeneralizedType = ResponseType;
+// 
+export type AuthMeType = ResponseType<{
+   id: number;
+   email: string;
+   login: string;
+}>;
+export type LoginType = ResponseType<{ userId: number }>;

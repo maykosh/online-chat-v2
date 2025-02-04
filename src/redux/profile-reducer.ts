@@ -1,5 +1,5 @@
 import { ThunkAction } from "redux-thunk";
-import { profileAPI } from "../api/api";
+import { profileAPI } from "../api/profileAPI";
 import { Photos, ProfileType } from "../types/types";
 import { RootState } from "./redux-store";
 
@@ -127,34 +127,40 @@ export const getUserProfileThunkCreator = (userId: number): ThunkActionType => {
    };
 };
 
-export const getStatusProfileThunkCreator = (userId: number): ThunkActionType => {
+export const getStatusProfileThunkCreator = (
+   userId: number
+): ThunkActionType => {
    return async (dispatch) => {
       const res = await profileAPI.getStatus(userId);
       dispatch(setStatus(res));
-   }
+   };
 };
 
-export const updateStatusProfileThunkCreator = (status: string): ThunkActionType => {
+export const updateStatusProfileThunkCreator = (
+   status: string
+): ThunkActionType => {
    return async (dispatch) => {
       const res = await profileAPI.updateStatus(status);
       if (res.resultCode === 0) dispatch(setStatus(status));
-   }
+   };
 };
 
-export const savePhotoProfileThunkCreator = (file: string): ThunkActionType => {
+export const savePhotoProfileThunkCreator = (file: Photos): ThunkActionType => {
    return async (dispatch) => {
       const res = await profileAPI.savePhotosProfile(file);
       if (res.resultCode === 0) {
-         dispatch(savePhoto(res.data.photos));
-      }
-   }
-};
-export const updateProfileThunkCreator = (profile: ProfileType): ThunkActionType => {
-      return async (dispatch, getState) => {
-         const myId = getState().auth.id as number;
-         const res = await profileAPI.updateProfile(profile);
-         if (res.resultCode === 0) dispatch(getUserProfileThunkCreator(myId));
+         dispatch(savePhoto(file));
       }
    };
+};
+export const updateProfileThunkCreator = (
+   profile: ProfileType
+): ThunkActionType => {
+   return async (dispatch, getState) => {
+      const myId = getState().auth.id as number;
+      const res = await profileAPI.updateProfile(profile);
+      if (res.resultCode === 0) dispatch(getUserProfileThunkCreator(myId));
+   };
+};
 
 export default profileReducer;

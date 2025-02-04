@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-// import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import React from "react";
 import { connect, Provider } from "react-redux";
@@ -10,7 +9,7 @@ import { withSuspens } from "./hoc/withSuspens";
 import store from "./redux/redux-store";
 import UpdateProfileContainer from "./components/settingsPage/updateProfileContainer";
 import { SnackbarProvider } from "notistack";
-import UsersFC from "./components/Users/UsersContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogContainer"));
 const ProfileContainerHook = React.lazy(() =>import("./components/Profile/ProfileContainer"));
@@ -48,7 +47,7 @@ class App extends React.Component<IProps> {
               path={"/profile/:userId?"}
               element={<ProfileContainerWithSuspens />}
             />
-            <Route path={"/users"} element={<UsersFC />} />
+            <Route path={"/users"} element={<UsersContainer />} />
             <Route path={"/login"} element={<LoginWithSuspens />} />
             <Route path={"/settings"} element={<UpdateProfileContainer/>}/>
             <Route path="*" element={<div>page not found 404</div>}/>

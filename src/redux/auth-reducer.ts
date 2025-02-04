@@ -1,7 +1,7 @@
-import { authAPI } from "../api/api";
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "./redux-store";
 import { ResultCode } from "../api/api.types";
+import { authAPI } from "../api/authAPI";
 
 const SET_USER_DATA = "authReducer/SET-USER-DATA";
 

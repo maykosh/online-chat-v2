@@ -23,7 +23,7 @@ const ProfileInfo: React.FC<TProps> = (props) => {
   const onChangePhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
    const files =  e.target.files
     if (files?.length) {
-      props.savePhoto(files[0]);
+      props.savePhoto({large: files[0]});
     }
   };
 

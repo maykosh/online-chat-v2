@@ -9,7 +9,7 @@ import {
 } from "../../redux/profile-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
-import { ProfileType } from "../../types/types";
+import { Photos, ProfileType } from "../../types/types";
 import { RootState } from "../../redux/redux-store";
 import { withRouter } from "../../hoc/withRouter";
 
@@ -23,7 +23,7 @@ type TDispatchProps = {
    getUserProfileThunkCreator: (myId: number) => void;
    getStatusProfileThunkCreator: (myId: number) => void;
    updateStatusProfileThunkCreator: (status: string) => void;
-   savePhotoProfileThunkCreator: (file: string) => void;
+   savePhotoProfileThunkCreator: (file: Photos) => void;
 };
 type TOwnProps = {
    userId?: string;

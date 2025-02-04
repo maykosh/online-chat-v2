@@ -24,4 +24,6 @@ const store = createStore(
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+type PropertiesType<T> = T extends {[key: string]: infer U} ? U : any 
+export type InferActionType<T extends {[key: string]: (...args: any) => any}> = ReturnType<PropertiesType<T>>
 export default store;
