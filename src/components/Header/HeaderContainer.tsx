@@ -9,7 +9,7 @@ type mapStateToPropsType = {
    login: string | null;
 };
 type mapStateToDispatchType = {
-   logoutThunkCreator: () => any;
+   logoutThunkCreator: () => void;
 };
 type TOwnProps = {};
 type HeaderContainerType = mapStateToPropsType &

@@ -1,8 +1,22 @@
 import React from "react";
-import css from "./updateProfileForm.module.css";
+import css from "./css/updateProfileForm.module.css";
 import userPhoto from "../../assets/img/user-profile-img.png";
 import Preloader from "../common/Preloader/Preloader";
-const UpdateProfileForm = (props) => {
+import {
+   SubmitHandler,
+   UseFormHandleSubmit,
+   UseFormRegister,
+} from "react-hook-form";
+import { ProfileType } from "@/types/types";
+
+interface IProps {
+   register: UseFormRegister<ProfileType>;
+   handleSubmit: UseFormHandleSubmit<ProfileType, undefined>;
+   profile: ProfileType | null;
+   onSubmit: SubmitHandler<ProfileType>;
+}
+
+const UpdateProfileForm: React.FC<IProps> = (props) => {
    const { register, handleSubmit, profile, onSubmit } = props;
    if (!profile) {
       return <Preloader isFetching={!profile} />;
@@ -42,7 +56,7 @@ const UpdateProfileForm = (props) => {
                   <input
                      type="file"
                      style={{ display: "none" }}
-                     {...register("file")}
+                     {...register("photos")}
                      id="file-upload"
                   />
                </label>

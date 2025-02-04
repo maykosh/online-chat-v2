@@ -2,18 +2,17 @@ import React from "react";
 import MyPostsContainer from "./MyPost/MyPostContainer";
 import css from "./profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import { ProfileType } from "../../types/types";
+import { Photos, ProfileType } from "../../types/types";
 
 interface IProps {
    profile: ProfileType | null;
    status: string;
-   updateStatusProfileThunkCreator: any;
+   updateStatusProfileThunkCreator: (status: string) => void;
    myId: number | null;
-   savePhotoProfileThunkCreator: any;
+   savePhotoProfileThunkCreator: (file: Photos) => void;
 }
 
 const Profile: React.FC<IProps> = (props) => {
-   
    return (
       <div className={css.container}>
          <ProfileInfo

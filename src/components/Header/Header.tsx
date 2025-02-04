@@ -4,7 +4,7 @@ import React from "react";
 type IProps = {
    isAuth: boolean;
    login: string | null;
-   logoutThunkCreator: () => any;
+   logoutThunkCreator: () => void;
 };
 const Header: React.FC<IProps> = (props) => {
    return (

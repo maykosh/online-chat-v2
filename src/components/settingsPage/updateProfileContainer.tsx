@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { connect } from "react-redux";
 import UpdateProfileForm from "./updateProfileForm";
 import {
@@ -13,8 +13,26 @@ import {
 import { useSnackbar } from "notistack";
 import { compose } from "redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { ProfileType } from "@/types/types";
+import { RootState } from "@/redux/redux-store";
 
-const UpdateProfileContainer = (props) => {
+type mapStateToPropsType = {
+   profile: ProfileType | null;
+   myId: number | null;
+};
+type mapStateToDispatchType = {
+   getUserProfileThunkCreator: (myId: number) => void;
+   updateProfileThunkCreator: (data: FormData) => void;
+};
+type TOwnProps = {};
+type FormData = ProfileType;
+type UpdateProfileContainerType = mapStateToPropsType &
+   mapStateToDispatchType &
+   TOwnProps;
+   
+const UpdateProfileContainer: React.FC<UpdateProfileContainerType> = (
+   props
+) => {
    const {
       myId,
       profile,
@@ -24,20 +42,21 @@ const UpdateProfileContainer = (props) => {
 
    const { enqueueSnackbar } = useSnackbar();
 
-   const { register, handleSubmit, reset } = useForm({
+   const { register, handleSubmit, reset } = useForm<FormData>({
       defaultValues: {
          fullName: "",
          aboutMe: "",
          lookingForAJob: false,
          contacts: {},
          lookingForAJobDescription: "",
+         photos: {},
       },
    });
 
-   const onSubmit = useCallback(
+   const onSubmit: SubmitHandler<FormData> = useCallback(
       async (data) => {
          try {
-            await updateProfileThunkCreator(data);
+            updateProfileThunkCreator(data);
             enqueueSnackbar("Profile updated successfully", {
                variant: "success",
             });
@@ -78,15 +97,18 @@ const UpdateProfileContainer = (props) => {
    );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
    profile: getProfileSelector(state),
    myId: getMyIdSelector(state),
 });
 
 export default compose(
-   connect(mapStateToProps, {
-      getUserProfileThunkCreator,
-      updateProfileThunkCreator,
-   }),
+   connect<mapStateToPropsType, mapStateToDispatchType, TOwnProps, RootState>(
+      mapStateToProps,
+      {
+         getUserProfileThunkCreator,
+         updateProfileThunkCreator,
+      }
+   ),
    withAuthRedirect
 )(UpdateProfileContainer);
